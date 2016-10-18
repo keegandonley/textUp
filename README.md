@@ -1,5 +1,5 @@
 # textUp
-
+![header](https://raw.githubusercontent.com/keegandonley/textUp/master/TextUp.png?token=AMHMkw0_enl62L9qc48OEqWRFiBPMSr9ks5YDwsjwA%3D%3D)
 This is a library for moving text between elements on an HTML page. 
 
 Something similar can be seen in action at www.keegandonley.com with the interactive text input.
