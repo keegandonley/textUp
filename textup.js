@@ -69,6 +69,32 @@
 			}
 		}
 
+		textUp.appendOne = function(inputLine) {
+			if (numElements > 0) {
+				var tempText = getElem(displayElems[0]).innerHTML + inputLine;
+				getElem(displayElems[0]).innerHTML = tempText;
+			} else {
+				console.error("No elements have been defined");
+			}
+		}
+
+		textUp.prependOne = function(inputLine) {
+			if (numElements > 0) {
+				var tempText = inputLine + getElem(displayElems[0]).innerHTML;
+				getElem(displayElems[0]).innerHTML = tempText;
+			} else {
+				console.error("No elements have been defined");
+			}
+		}
+
+		textUp.replaceOne = function(inputLine) {
+			if (numElements > 0) {
+				getElem(displayElems[0]).innerHTML = inputLine;
+			} else {
+				console.error("No elements have been defined");
+			}
+		}
+
 		textUp.getElems = function() {
 			return displayElems;
 		}

@@ -1,6 +1,6 @@
 # textUp
 ![header](https://raw.githubusercontent.com/keegandonley/textUp/master/TextUp.png?token=AMHMkw0_enl62L9qc48OEqWRFiBPMSr9ks5YDwsjwA%3D%3D)
-This is a library for moving text between elements on an HTML page. 
+This is a library for moving text between elements on an HTML page.
 
 Something similar can be seen in action at www.keegandonley.com with the interactive text input.
 
@@ -37,6 +37,36 @@ textUp.prepend("This")
 textUp.prepend("is")
 textUp.prepend("adding")
 textUp.prepend("text")
+```
+
+#### textUp.prependOne(*string*)
+The function takes a string and adds it to the beginning of the existing bottom layer of the display, leaving upper levels untouched
+
+Example:
+```javascript
+textUp.prepend("solutions")
+textUp.prependOne("Simple ")
+// Result: "Simple Solutions"
+```
+
+#### textUp.appendOne(*string*)
+The function takes a string and adds it to the end of the existing bottom layer of the display, leaving upper levels untouched
+
+Example:
+```javascript
+textUp.prepend("solutions")
+textUp.appendOne(", Simple")
+// Result: "solutions, Simple"
+```
+
+#### textUp.replaceOne(*string*)
+The function takes a string and replaces the existing bottom layer of the display, leaving upper levels untouched
+
+Example:
+```javascript
+textUp.prepend("solutions")
+textUp.replaceOne("Simple")
+// Result: "Simple"
 ```
 
 ### Manipulating the display
