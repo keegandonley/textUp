@@ -52,6 +52,10 @@
 			// Adds something to the next open slot
 		}
 
+		textUp.append = function(){
+			// Adds something to the next open slot
+		}
+
 		textUp.prepend = function(inputLine){
 			if (numElements > 0) {
 				if (numElements < 2) {
