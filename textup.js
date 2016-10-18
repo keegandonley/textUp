@@ -73,6 +73,28 @@
 			}
 		}
 
+		textUp.stick = function(stickyElem){
+			var tracker = 0;
+			displayElems.forEach(function (element) {
+				if (element.id === stickyElem) {
+					displayElems[tracker].sticky = true;
+				} else {
+					tracker++;
+				}
+			})
+		}
+
+		textUp.unStick = function(stickyElem){
+			var tracker = 0;
+			displayElems.forEach(function (element) {
+				if (element.id === stickyElem) {
+					displayElems[tracker].sticky = false;
+				} else {
+					tracker++;
+				}
+			})
+		}
+
 		textUp.getElems = function() {
 			return displayElems;
 		}
