@@ -2,21 +2,26 @@
     'use strict';
     function define_textUp(){
         var textUp = {};
-
-		// Private elements
 		var displayElems = [];
 		var numElements = 0;
-		var debug = false;
+		// Set to true to enable logging
+		var isDebug = false;
+		var error = console.error;
 
 		function ismovable (element) {
 			return element.sticky;
 		}
 
 		function getElem (element) {
-			if (debug){console.log(element)}
+			debug(element);
 			return document.getElementById(element.id);
 		}
 
+		function debug(msg) {
+			if (isDebug) {
+				console.log(msg);
+			}
+		}
 
 		/*
 		@param: elements - array of strings indicating the html ID
