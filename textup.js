@@ -123,6 +123,6 @@
         window.textUp = define_textUp();
     }
     else{
-        console.log("TextUp is already defined.");
+        console.warn("TextUp is already defined.");
     }
 })(window);
