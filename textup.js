@@ -17,6 +17,19 @@
 			return document.getElementById(element.id);
 		}
 
+		function checkElem() {
+			if (numElements > 0) {
+				return numElements;
+			} else {
+				error("No elements have been defined");
+				return false;
+			}
+		}
+
+		function checkElemExist(e) {
+			return document.getElementById(e)
+		}
+
 		function debug(msg) {
 			if (isDebug) {
 				console.log(msg);
@@ -29,11 +42,16 @@
 		*/
 		textUp.define = function(elements){
 			elements.forEach(function (element) {
-				numElements++;
-				displayElems.push({
-					id: element,
-					sticky: false
-				})
+				if (checkElemExist(element)) {
+					numElements++;
+					displayElems.push({
+						id: element,
+						sticky: false
+					})
+				} else {
+					error("Element " + element + " does not exist" );
+				}
+
 			})
 		}
 
@@ -42,25 +60,28 @@
 							of new element for the display
 		*/
 		textUp.addElem = function(element){
-			numElements++;
-			displayElems.push({
-				id: element,
-				sticky: false
-			})
+			if (checkElemExist(element)) {
+				numElements++;
+				displayElems.push({
+					id: element,
+					sticky: false
+				})
+			} else {
+				error("Element " + element + " does not exist" );
+			}
 		}
 
 		textUp.bump = function(){
-			textUp.prepend("");
+			textUp.prepend("  ");
 		}
 
 		textUp.prepend = function(inputLine){
-			if (numElements > 0) {
-				if (numElements < 2) {
-					if (debug){console.log(numElements + " elements exist in memory")}
-					// Need to reference html object
-					document.getElementById(displayElems[0].id).innerHTML = inputLine;
+			if (checkElem()) {
+				if (checkElem() < 2) {
+					debug(numElements + " elements exist in memory");
+					getElem(displayElems[0]).innerHTML = inputLine;
 				} else {
-					if (debug){console.log(numElements + " elements exist in memory")}
+					debug(numElements + " elements exist in memory");
 					var i = numElements - 1;
 					while (i > 0) {
 						if (debug){console.log(i)}
@@ -69,34 +90,26 @@
 					}
 					getElem(displayElems[0]).innerHTML = inputLine;
 				}
-			} else {
-				console.error("No elements have been defined");
 			}
 		}
 
 		textUp.appendOne = function(inputLine) {
-			if (numElements > 0) {
+			if (checkElem()) {
 				var tempText = getElem(displayElems[0]).innerHTML + inputLine;
 				getElem(displayElems[0]).innerHTML = tempText;
-			} else {
-				console.error("No elements have been defined");
 			}
 		}
 
 		textUp.prependOne = function(inputLine) {
-			if (numElements > 0) {
+			if (checkElem()) {
 				var tempText = inputLine + getElem(displayElems[0]).innerHTML;
 				getElem(displayElems[0]).innerHTML = tempText;
-			} else {
-				console.error("No elements have been defined");
 			}
 		}
 
 		textUp.replaceOne = function(inputLine) {
-			if (numElements > 0) {
+			if (checkElem()) {
 				getElem(displayElems[0]).innerHTML = inputLine;
-			} else {
-				console.error("No elements have been defined");
 			}
 		}
 
