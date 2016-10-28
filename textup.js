@@ -35,6 +35,27 @@
 				console.log(msg);
 			}
 		}
+		textUp.stick = function(element) {
+			for (var i = 0; i < numElements; i++) {
+				if (displayElems[i].id === element) {
+					displayElems[i].sticky = true;
+					return true;
+				}
+			}
+			error("The element you tried to make sticky dosn't exist!")
+			return false;
+		}
+
+		textUp.unStick = function(element) {
+			for (var i = 0; i < numElements; i++) {
+				if (displayElems[i].id === element) {
+					displayElems[i].sticky = false;
+					return true;
+				}
+			}
+			error("The element you tried to un-stick dosn't exist!")
+			return false;
+		}
 
 		/*
 		@param: elements - array of strings indicating the html ID
@@ -84,8 +105,12 @@
 					debug(numElements + " elements exist in memory");
 					var i = numElements - 1;
 					while (i > 0) {
-						if (debug){console.log(i)}
-						getElem(displayElems[i]).innerHTML = getElem(displayElems[i-1]).innerHTML;
+						if (displayElems[i].sticky) {
+							getElem(displayElems[i+1]).innerHTML = getElem(displayElems[i-1]).innerHTML;
+						} else {
+							getElem(displayElems[i]).innerHTML = getElem(displayElems[i-1]).innerHTML;
+						}
+						debug(i);
 						i--;
 					}
 					getElem(displayElems[0]).innerHTML = inputLine;
