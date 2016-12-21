@@ -1,5 +1,7 @@
 var expect = chai.expect;
 
+document.getElementById("testelems").style.display = "none";
+
 describe("Textup", function() {
   describe("creation of global variable", function() {
     it("should exist", function() {
