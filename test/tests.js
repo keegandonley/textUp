@@ -11,6 +11,14 @@ describe("Textup", function() {
     it("should be empty", function() {
       expect(textUp.getElems()).to.be.empty;
     })
+
+    it("jQuery should be defined", function() {
+      // If jQuery ($) is not defined, styling and (in the future,
+      // animations) will not work, and as such related tests
+      // will fail.
+      expect(jQuery).to.be.ok;
+      expect($).to.be.ok;
+    })
   });
 
   describe("adding elements to the list", function() {
@@ -91,6 +99,28 @@ describe("Textup", function() {
       expect(document.getElementById('one').innerHTML).be.equal("stick!");
       expect(document.getElementById('two').innerHTML).be.equal("stick!");
       expect(document.getElementById('three').innerHTML).be.equal("test");
+    });
+  });
+
+  describe("testing styling of elements", function() {
+    it("no styles should be enabled", function() {
+      expect($('#one').hasClass()).be.equal(false);
+      expect($('#two').hasClass()).be.equal(false);
+      expect($('#three').hasClass()).be.equal(false);
+    });
+
+    it("should add an element with style", function() {
+      textUp.addElem("four");
+      expect(textUp.getElems()[3]).to.be.ok;
+      expect(textUp.getElems().length).be.equal(4);
+    });
+
+    it("all elements should have style", function() {
+      textUp.prepend("final!", true);
+      expect($('#one').hasClass('textUp_top_format')).be.equal(true);
+      expect($('#two').hasClass('textUp_second_format')).be.equal(true);
+      expect($('#three').hasClass('textUp_basic_format')).be.equal(true);
+      expect($('#four').hasClass('textUp_basic_format')).be.equal(true);
     });
   });
 
