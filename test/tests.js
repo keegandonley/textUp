@@ -109,19 +109,32 @@ describe("Textup", function() {
       expect($('#three').hasClass()).be.equal(false);
     });
 
-    it("should add an element with style", function() {
+    it("should add an element (for later style)", function() {
       textUp.addElem("four");
       expect(textUp.getElems()[3]).to.be.ok;
       expect(textUp.getElems().length).be.equal(4);
     });
 
-    it("all elements should have style", function() {
+    it("prepend text with style", function() {
       textUp.prepend("final!", true);
+      // Here, all we care about is whether the text was added successfully
+      expect(document.getElementById('one').innerHTML).be.equal("final!");
+      expect(document.getElementById('two').innerHTML).be.equal("stick!");
+      expect(document.getElementById('three').innerHTML).be.equal("stick!");
+      expect(document.getElementById('four').innerHTML).be.equal("test");
+    });
+
+    it("all text fields should have style", function() {
+      /*These are the classes that are added and used to style the elements,
+      so if they exist it means the style has been applied.
+      */
+
+
       expect($('#one').hasClass('textUp_top_format')).be.equal(true);
       expect($('#two').hasClass('textUp_second_format')).be.equal(true);
       expect($('#three').hasClass('textUp_basic_format')).be.equal(true);
       expect($('#four').hasClass('textUp_basic_format')).be.equal(true);
-    });
+    })
   });
 
 });
