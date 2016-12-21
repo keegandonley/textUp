@@ -19,10 +19,15 @@ describe("Textup", function() {
       var result = {id: "one", sticky: false};
       expect(textUp.getElems()[0]).deep.equal(result);
     });
+
     it("should add another element", function() {
       textUp.addElem('two');
       var result = {id: "two", sticky: false};
       expect(textUp.getElems()[1]).deep.equal(result);
+    });
+
+    it("should contain the correct # of elements", function() {
+      expect(textUp.getElems().length).be.equal(2);
     });
   });
 
