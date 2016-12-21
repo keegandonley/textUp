@@ -49,6 +49,49 @@ describe("Textup", function() {
       var result = {id: "one", sticky: false};
       expect(textUp.getElems()[0]).deep.equal(result);
     });
+
+    it("should unstick another element", function() {
+      textUp.unStick('two');
+      var result = {id: "two", sticky: false};
+      expect(textUp.getElems()[1]).deep.equal(result);
+    });
+  });
+
+  describe("adding text", function() {
+    it("test prependOne when empty", function() {
+      textUp.prependOne("test");
+      expect(document.getElementById('one').innerHTML).be.equal("test");
+    });
+
+    it("test prepend", function() {
+      textUp.prepend("hello");
+      expect(document.getElementById('one').innerHTML).be.equal("hello");
+    });
+
+    it("test prependOne when full", function() {
+      textUp.prependOne("test");
+      expect(document.getElementById('one').innerHTML).be.equal("testhello");
+    });
+  });
+
+  describe("testing sticky responses with content", function() {
+    it("test adding text with stuck element", function() {
+      textUp.stick("two");
+      textUp.addElem("three");
+      textUp.prepend("stick!");
+      textUp.prepend("stick!");
+      expect(document.getElementById('one').innerHTML).be.equal("stick!");
+      expect(document.getElementById('two').innerHTML).be.equal("test");
+      expect(document.getElementById('three').innerHTML).be.equal("stick!");
+    });
+
+    it("test adding text after unsticking element", function() {
+      textUp.unStick("two");
+      textUp.prepend("stick!");
+      expect(document.getElementById('one').innerHTML).be.equal("stick!");
+      expect(document.getElementById('two').innerHTML).be.equal("stick!");
+      expect(document.getElementById('three').innerHTML).be.equal("test");
+    });
   });
 
 });
