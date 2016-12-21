@@ -7,6 +7,10 @@ describe("Textup", function() {
     it("should exist", function() {
       expect(textUp).to.be.ok;
     });
+
+    it("should be empty", function() {
+      expect(textUp.getElems()).to.be.empty;
+    })
   });
 
   describe("adding elements to the list", function() {
