@@ -35,6 +35,17 @@
 				console.log(msg);
 			}
 		}
+
+    function addStyleAttribute(element, index, size) {
+      if (index === 0) {
+        $(element).addClass('textUp_top_format');
+      } else if (index === 1) {
+        $(element).addClass('textUp_second_format');
+      } else {
+        $(element).addClass('textUp_basic_format');
+      }
+    }
+
 		textUp.stick = function(element) {
 			for (var i = 0; i < numElements; i++) {
 				if (displayElems[i].id === element) {
@@ -96,7 +107,8 @@
 			textUp.prepend("  ");
 		}
 
-		textUp.prepend = function(inputLine){
+		textUp.prepend = function(inputLine, styling){
+      !!(styling);
 			if (checkElem()) {
 				if (checkElem() < 2) {
 					debug(numElements + " elements exist in memory");
@@ -116,6 +128,11 @@
 					getElem(displayElems[0]).innerHTML = inputLine;
 				}
 			}
+      for (var i = 0; i < checkElem(); i++){
+        if (styling && $) {
+          addStyleAttribute(getElem(displayElems[i]), i, checkElem());
+        }
+      }
 		}
 
 		textUp.appendOne = function(inputLine) {
