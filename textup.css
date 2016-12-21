@@ -1,0 +1,21 @@
+.textUp_top_format {
+  opacity: 0.5;
+  font-size: 10pt;
+  text-align: center;
+}
+
+.textUp_second_format {
+  opacity: 0.7;
+  font-size: 12pt;
+  text-align: center;
+}
+
+.textUp_basic_format {
+  font-size: 16pt;
+  text-align: center;
+}
+.textUp_top_format,
+.textUp_second_format,
+.textUp_basic_format {
+  font-family: helvetica;
+}
